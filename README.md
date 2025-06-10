@@ -1,4 +1,4 @@
-# 🎲 Dice Roller App
+# 🎲 Dice Roller Game App
 
 A simple Flutter app that simulates rolling a six-sided dice. Built as a beginner project to learn Flutter basics like widgets, state management, and user interaction.
 

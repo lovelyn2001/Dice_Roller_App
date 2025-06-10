@@ -11,10 +11,20 @@ class DiceRoller extends StatefulWidget {
 }
 
 class _DiceRollerState extends State<DiceRoller> {
-  var currentState = 2;
+  String text = '';
+  var firstImage = 2;
+  var secondImage = 2;
   rolldice() {
     setState(() {
-      currentState = Random().nextInt(6) + 1;
+      firstImage = Random().nextInt(6) + 1;
+      secondImage = Random().nextInt(6) + 1;
+      if (firstImage > secondImage) {
+        text = 'First Dice Wins!';
+      } else if (firstImage < secondImage) {
+        text = 'Second Dice Wins!';
+      } else {
+        text = 'It\'s a Tie!';
+      }
     });
   }
 
@@ -23,7 +33,16 @@ class _DiceRollerState extends State<DiceRoller> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Image.asset('assets/images/dice-$currentState.png', width: 200),
+        StyleText(text),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('assets/images/dice-$firstImage.png', width: 150),
+            SizedBox(width: 10),
+            Image.asset('assets/images/dice-$secondImage.png', width: 150),
+          ],
+        ),
+
         TextButton(
           style: TextButton.styleFrom(
             padding: EdgeInsets.only(top: 20.0),
